@@ -40,6 +40,18 @@ RSpec.describe UrlController, :type => :controller do
           expect(response).to redirect_to(assigns[:url].short_url)
         end
       end
+      context "with existing url" do 
+        before :each do
+          @url = create(:url)
+          @url.save
+        end
+
+        it "should not add new url" do
+          expect{
+            post :create, params: { url: attributes_for(:url) }
+          }.not_to change(Url, :count)
+        end
+      end
     end
 
 
