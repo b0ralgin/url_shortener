@@ -10,7 +10,8 @@ RSpec.describe UrlController, :type => :controller do
 
   describe "GET show" do
     before :each do
-      @url = create(:url)
+      @url = create(:url, short_url: 'aaa')
+      
     end
 
     it "should get full URL" do 
@@ -32,7 +33,7 @@ RSpec.describe UrlController, :type => :controller do
         it "creates a new url" do
           expect{
             post :create, params: { url: attributes_for(:url) }
-          }.to change(Url,:count).by(1)
+          }.to change(Url, :count).by(1)
         end
       end
     end
