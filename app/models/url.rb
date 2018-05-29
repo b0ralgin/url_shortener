@@ -18,10 +18,17 @@ class Url < ApplicationRecord
   private
 
   def generate_short_url
+<<<<<<< HEAD
     chars = ['0'..'9', 'A'..'Z', 'a'..'z'].map(&:to_a).flatten
     self.short_url = Array.new(6).map { chars.sample }.join
     self.short_url = Array.new(6).map { chars.sample }.join until Url.find_by_short_url(short_url).nil?
   end
 
   
+=======
+    chars = ['0'..'9','A'..'Z','a'..'z'].map { |range| range.to_a }.flatten
+    self.short_url = 6.times.map { chars.sample }.join
+    self.short_url = 6.times.map { chars.sample }.join until Url.find_by_short_url(short_url).nil?
+  end
+>>>>>>> ec0df0f7fe646cbddedf5921f38305793b7e79fd
 end
