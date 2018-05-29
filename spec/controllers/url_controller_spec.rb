@@ -9,17 +9,33 @@ RSpec.describe UrlController, :type => :controller do
   end
 
   describe "GET show" do
-    it "should fail when GET unknown url" do
-      get :show, params: { short_url: 'aaa' }
-      expect(response).to have_http_status(:not_found)
-    end
-
-    before do
+    before :each do
       @url = create(:url)
     end
+
     it "should get full URL" do 
       get :show, params: { short_url: @url.short_url}
       expect(assigns(:url)).to eq @url
+      expect(response).to redirect_to(@url.long_url)
     end
+
+    it "should get Not found" do 
+      get :show, params: { short_url: @url.short_url+'a'}
+      expect(response).to have_http_status(:not_found)
+    end
+
+  end
+
+  describe "POST create" do
+    context "with valid params" do
+      context "with new url" do 
+        it "creates a new url" do
+          post :create, params: { url: attributes_for(:url) }
+          expect().to change(Url,:count).by(1)
+        end
+      end
+    end
+
+   
   end
 end
