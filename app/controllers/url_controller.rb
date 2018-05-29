@@ -14,7 +14,10 @@ class UrlController < ApplicationController
 
   def create 
     @url = Url.new(url_params)
-    @url.save
+    if !@url.save 
+      render json: {error: "cannot save link" }
+    end
+    redirect_to @url.short_url
   end
 
   private 
