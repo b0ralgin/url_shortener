@@ -10,6 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_05_29_081854) do
+
+  create_table "urls", force: :cascade do |t|
+    t.text "long_url"
+    t.text "short_url"
+    t.date "valid_to"
+  end
 
 end
