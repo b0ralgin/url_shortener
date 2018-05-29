@@ -23,4 +23,5 @@ class Url < ApplicationRecord
     self.short_url = Array.new(6).map { chars.sample }.join until Url.find_by_short_url(short_url).nil?
   end
 
+  
 end

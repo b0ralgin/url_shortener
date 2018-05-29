@@ -45,5 +45,6 @@ RSpec.describe Url, type: :model do
       expect(url.new?).to eq false
     end
 
+    
   end
 end
