@@ -30,8 +30,9 @@ RSpec.describe UrlController, :type => :controller do
     context "with valid params" do
       context "with new url" do 
         it "creates a new url" do
-          post :create, params: { url: attributes_for(:url) }
-          expect().to change(Url,:count).by(1)
+          expect{
+            post :create, params: { url: attributes_for(:url) }
+          }.to change(Url,:count).by(1)
         end
       end
     end

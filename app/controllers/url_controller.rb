@@ -12,4 +12,7 @@ class UrlController < ApplicationController
     end
   end
 
+  def create 
+  end
+
 end
