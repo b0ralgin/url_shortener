@@ -35,8 +35,13 @@ RSpec.describe UrlController, :type => :controller do
             post :create, params: { url: attributes_for(:url) }
           }.to change(Url, :count).by(1)
         end
+        it "redirects to new link" do
+          post :create, params: { url: attributes_for(:url) }
+          expect(response).to redirect_to(attributes_for(:url)[:long_url])
+        end
       end
     end
+
 
    
   end
