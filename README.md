@@ -1,24 +1,21 @@
-# README
+###Features
+1. For each original URL sent create unique short URL (POST app.ly/links)
+2. Visiting a short url should redirect to the original URL
+###Remarks
+Do not over complicate the implementation. Just make sure you follow all the standards that you’d follow in a real project.
+- Must have tests
+- Must pass rubocop
+- Should run in docker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###How to build and run
+```bash
+docker-compose build
+```
+run to make a db
+```bash
+  docker-compose run url_shortener  bundle exec rake db:migrate
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker-compose up -d 
+```
