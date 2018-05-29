@@ -57,8 +57,12 @@ RSpec.describe UrlController, :type => :controller do
         end
       end
     end
-
-
-   
+    context "with invalid params" do
+      it "should not create null url" do
+        expect {
+        post :create, params: { url:attributes_for(:url, long_url: nil) }
+        }.not_to change(Url, :count)
+      end
+    end
   end
 end
