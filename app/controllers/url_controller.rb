@@ -15,10 +15,12 @@ class UrlController < ApplicationController
   def create 
     @url = Url.new(url_params)
     if @url.new?     
-      if !@url.save 
-        render json: {error: "cannot save link" }
+      if @url.save 
+        redirect_to @url.short_url
+      else
+        render json: {error: "cannot save link" }, status: :bad_request
       end
-      redirect_to @url.short_url
+     
     else 
       redirect_to @url.duplicates.short_url
     end
