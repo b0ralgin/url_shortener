@@ -45,11 +45,15 @@ RSpec.describe UrlController, :type => :controller do
           @url = create(:url)
           @url.save
         end
-
         it "should not add new url" do
           expect{
             post :create, params: { url: attributes_for(:url) }
           }.not_to change(Url, :count)
+        end
+
+        it "should redirect to old link" do
+          post :create, params: { url: attributes_for(:url) }
+          expect(response).to redirect_to(@url.short_url)
         end
       end
     end
