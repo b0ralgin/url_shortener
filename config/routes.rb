@@ -4,4 +4,3 @@ Rails.application.routes.draw do
   get '/:short_url', to: 'url#show'
   post '/links', to: 'url#create'
 end
-
